@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3M Café | كافيه 3 إم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    /* Global styles */
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #1a1a2e 0%, #16213e 100%);
+      color: #eee;
+    }
+    header {
+      /* Background image for the header */
+      background: linear-gradient(rgba(15, 12, 41, 0.7), rgba(48, 43, 99, 0.7)), url('https://h.top4top.io/p_3445os6vn1.jpg') no-repeat center center/cover;
+      padding: 80px 20px; /* Increased padding for better visual */
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      position: relative; /* Needed for positioning overlay */
+      overflow: hidden; /* Ensures image doesn't overflow */
+    }
+    header h1 {
+      margin: 0;
+      font-size: 64px; /* Larger font for main title */
+      font-weight: 800;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* Text shadow for readability */
+    }
+    header p {
+      font-size: 24px; /* Larger font for subtitle */
+      margin-top: 15px;
+      color: #bbb;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5); /* Text shadow for readability */
+    }
+    nav {
+      background: #0f3460;
+      text-align: center;
+      padding: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 17px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffd369;
+    }
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2 {
+      color: #ffd369;
+      font-size: 32px;
+      border-bottom: 2px solid #ffd36944;
+      padding-bottom: 12px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .menu-link a, .whatsapp-btn a {
+      background-color: #ffd369;
+      color: #000;
+      padding: 14px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+    .menu-link a:hover, .whatsapp-btn a:hover {
+      background-color: #ffc100;
+    }
+    .features-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .feature {
+      background: #222831;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+      text-align: center;
+      font-size: 18px;
+      display: flex; /* Flexbox for icon and text alignment */
+      flex-direction: column; /* Stack icon and text */
+      align-items: center; /* Center items horizontally */
+    }
+    .feature i { /* Style for icons in features */
+      color: #ffd369;
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition: transform 0.4s, filter 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+    .menu-display {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .menu-display img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    /* Styles for the menu list */
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .menu-category {
+      background: #222831;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    }
+    .menu-category h3 {
+      color: #ffd369;
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 25px;
+      text-align: center;
+      border-bottom: 1px solid #ffd36944;
+      padding-bottom: 10px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+    .menu-item .name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      flex-grow: 1; /* Allows name to take up available space */
+      padding-left: 10px; /* Space before price */
+    }
+    .menu-item .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffd369;
+      white-space: nowrap; /* Prevents price from wrapping */
+    }
+    iframe {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    footer {
+      background: #0f0c29;
+      color: #bbb;
+      text-align: center;
+      padding: 25px;
+      font-size: 15px;
+    }
+    #toTop {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: #ffd369;
+      color: black;
+      border: none;
+      border-radius: 50%;
+      padding: 10px 15px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-mug-hot"></i> 3M Café</h1>
+    <p>كافيه 3 إم | شارع شريف تقاطع شارع رستم باشا – القاهرة</p>
+  </header>
+
+  <nav>
+    <a href="#menu">المنيو</a>
+    <a href="#features">الخدمات</a>
+    <a href="#gallery">الصور</a>
+    <a href="#map">الخريطة</a>
+    <a href="#contact">الحجز</a>
+    <a href="#facebook">فيسبوك</a>
+  </nav>
+
+  <section id="menu">
+    <h2>📋 قائمة المنيو</h2>
+    <div class="menu-link">
+      <a href="Coffee%20Menu%20%20(3)_250601_191504.pdf" target="_blank">📄 تحميل المنيو (PDF)</a>
+    </div>
+
+    <!-- Detailed menu list starts here -->
+    <div class="menu-list">
+      <div class="menu-category">
+        <h3>مشروبات ساخنة</h3>
+        <div class="menu-item"><span class="name">قهوة اسبريسو</span><span class="price">35</span></div>
+        <div class="menu-item"><span class="name">قهوة تركي</span><span class="price">30</span></div>
+        <div class="menu-item"><span class="name">قهوة فرنساوي</span><span class="price">35</span></div>
+        <div class="menu-item"><span class="name">قهوة بالبندق</span><span class="price">30</span></div>
+        <div class="menu-item"><span class="name">نكهات قهوة</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">شاي</span><span class="price">30</span></div>
+        <div class="menu-item"><span class="name">كابتشينو</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">نسكافيه بلاك</span><span class="price">45</span></div>
+        <div class="menu-item"><span class="name">نسكافيه بالحليب</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">سيزر ساخن</span><span class="price">50</span></div>
+        <div class="menu-item"><span class="name">أعشاب</span><span class="price">35</span></div>
+        <div class="menu-item"><span class="name">قرفة</span><span class="price">38</span></div>
+        <div class="menu-item"><span class="name">شوكولاتة ساخنة</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">مشروب سحلب</span><span class="price">40</span></div>
+        <div class="menu-item"><span class="name">سحلب بالمكسرات</span><span class="price">55</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>مشروبات باردة</h3>
+        <div class="menu-item"><span class="name">آيس أمريكانو (صغير)</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">آيس أمريكانو (وسط)</span><span class="price">75</span></div>
+        <div class="menu-item"><span class="name">آيس لاتيه (صغير)</span><span class="price">70</span></div>
+        <div class="menu-item"><span class="name">آيس لاتيه (وسط)</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">آيس سبانيش لاتيه (صغير)</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">آيس سبانيش لاتيه (وسط)</span><span class="price">100</span></div>
+        <div class="menu-item"><span class="name">آيس بيسكوف لاتيه جديد (صغير)</span><span class="price">120</span></div>
+        <div class="menu-item"><span class="name">آيس بيسكوف لاتيه جديد (وسط)</span><span class="price">140</span></div>
+        <div class="menu-item"><span class="name">آيس سولتيد كراميل (صغير)</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">آيس سولتيد كراميل (وسط)</span><span class="price">110</span></div>
+        <div class="menu-item"><span class="name">آيس موكا (صغير)</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">آيس موكا (وسط)</span><span class="price">110</span></div>
+        <div class="menu-item"><span class="name">آيس شيكن وايت موكا (صغير)</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">آيس شيكن وايت موكا (وسط)</span><span class="price">110</span></div>
+        <div class="menu-item"><span class="name">آيس كراميل ماكياتو (صغير)</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">آيس كراميل ماكياتو (وسط)</span><span class="price">110</span></div>
+        <div class="menu-item"><span class="name">آيس فستق لاتيه (صغير)</span><span class="price">120</span></div>
+        <div class="menu-item"><span class="name">آيس فستق لاتيه (وسط)</span><span class="price">140</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>مخبوزات</h3>
+        <div class="menu-item"><span class="name">كرواسون سادة</span><span class="price">40</span></div>
+        <div class="menu-item"><span class="name">كرواسون شوكولاتة</span><span class="price">80</span></div>
+        <div class="menu-item"><span class="name">كرواسون لوتس فستق</span><span class="price">85</span></div>
+        <div class="menu-item"><span class="name">كرواسون</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">سينابون رول</span><span class="price">75</span></div>
+        <div class="menu-item"><span class="name">كنافة فستق</span><span class="price">110</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>عصائر طازجة</h3>
+        <div class="menu-item"><span class="name">جوافة</span><span class="price">58</span></div>
+        <div class="menu-item"><span class="name">كنتالوب</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">بطيخ</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">برتقال</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">كيوي</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">موز بالحليب</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">جوافة بالحليب</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">أناناس</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">مانجو خوخ</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">كيوي أناناس</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">فراولة كيوي</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">جوافة نعناع فانيليا</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">بينا كولادا</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">كوكتيل 3M</span><span class="price">70</span></div>
+        <div class="menu-item"><span class="name">موهيتو</span><span class="price">70</span></div>
+        <div class="menu-item"><span class="name">توينكز</span><span class="price">70</span></div>
+        <div class="menu-item"><span class="name">هوهوز</span><span class="price">70</span></div>
+        <div class="menu-item"><span class="name">أوريو</span><span class="price">70</span></div>
+        <div class="menu-item"><span class="name">بيبسي/كولا</span><span class="price">45</span></div>
+        <div class="menu-item"><span class="name">ريد بول</span><span class="price">80</span></div>
+        <div class="menu-item"><span class="name">ماء</span><span class="price">12</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>حلويات</h3>
+        <div class="menu-item"><span class="name">كوكيز فدج شوكولاتة</span><span class="price">50</span></div>
+        <div class="menu-item"><span class="name">كوكيز كيندر، نوتيلا</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">كيكة القط الكسول الجديدة</span><span class="price">80</span></div>
+        <div class="menu-item"><span class="name">سان سيباستيان سادة</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">تيراميسو إيطالي</span><span class="price">140</span></div>
+        <div class="menu-item"><span class="name">هاني كيك</span><span class="price">75</span></div>
+        <div class="menu-item"><span class="name">شوكولاتة كيك</span><span class="price">80</span></div>
+        <div class="menu-item"><span class="name">تشيز كيك سادة</span><span class="price">70</span></div>
+        <div class="menu-item"><span class="name">مولتن كيك</span><span class="price">100</span></div>
+        <div class="menu-item"><span class="name">مولتن كيك نوتيلا</span><span class="price">115</span></div>
+        <div class="menu-item"><span class="name">تشيز كيك</span><span class="price">95</span></div>
+        <div class="menu-item"><span class="name">ريد فيلفت</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">فدج شوكولاتة</span><span class="price">95</span></div>
+        <div class="menu-item"><span class="name">براونيز</span><span class="price">95</span></div>
+        <div class="menu-item"><span class="name">فولكانو نوتيلا</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">فولكانو لوتس</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">عشاق الشوكولاتة</span><span class="price">114</span></div>
+        <div class="menu-item"><span class="name">وافل نوتيلا</span><span class="price">80</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>سموثي</h3>
+        <div class="menu-item"><span class="name">مانجو</span><span class="price">58</span></div>
+        <div class="menu-item"><span class="name">فراولة</span><span class="price">55</span></div>
+        <div class="menu-item"><span class="name">بلو بيري</span><span class="price">55</span></div>
+        <div class="menu-item"><span class="name">روز بيري</span><span class="price">55</span></div>
+        <div class="menu-item"><span class="name">بطيخ</span><span class="price">55</span></div>
+        <div class="menu-item"><span class="name">بطيخ بالنعناع</span><span class="price">55</span></div>
+        <div class="menu-item"><span class="name">جوافة</span><span class="price">50</span></div>
+        <div class="menu-item"><span class="name">كنتالوب</span><span class="price">55</span></div>
+        <div class="menu-item"><span class="name">خوخ</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">ليمون</span><span class="price">50</span></div>
+        <div class="menu-item"><span class="name">باشن فروت</span><span class="price">70</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>ماتشا بار</h3>
+        <div class="menu-item"><span class="name">فلات ماتشا لاتيه</span><span class="price">85</span></div>
+        <div class="menu-item"><span class="name">ماتشا سبانيش ساخنة</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">ماتشا شوكولاتة بيضاء ساخنة</span><span class="price">100</span></div>
+        <div class="menu-item"><span class="name">ماتشا لاتيه مثلجة</span><span class="price">85</span></div>
+        <div class="menu-item"><span class="name">ماتشا مخلوطة</span><span class="price">110</span></div>
+        <div class="menu-item"><span class="name">هوت ماتشا لاتيه (صغير)</span><span class="price">80</span></div>
+        <div class="menu-item"><span class="name">هوت ماتشا لاتيه (وسط)</span><span class="price">100</span></div>
+        <div class="menu-item"><span class="name">هوت سبانيش ماتشا (وسط)</span><span class="price">110</span></div>
+        <div class="menu-item"><span class="name">هوت وايت شوكولاتة (وسط)</span><span class="price">110</span></div>
+        <div class="menu-item"><span class="name">آيس ماتشا لاتيه (وسط)</span><span class="price">125</span></div>
+        <div class="menu-item"><span class="name">بليند ماتشا</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">بليند سبانيش</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">بليند وايت شوكولاتة</span><span class="price">95</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>فرابيه</h3>
+        <div class="menu-item"><span class="name">قهوة</span><span class="price">86</span></div>
+        <div class="menu-item"><span class="name">فانيليا</span><span class="price">91</span></div>
+        <div class="menu-item"><span class="name">شوكولاتة</span><span class="price">91</span></div>
+        <div class="menu-item"><span class="name">بندق</span><span class="price">81</span></div>
+        <div class="menu-item"><span class="name">كراميل</span><span class="price">91</span></div>
+        <div class="menu-item"><span class="name">كراميل كريست</span><span class="price">99</span></div>
+        <div class="menu-item"><span class="name">لوتس</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">سبانيش لاتيه</span><span class="price">98</span></div>
+        <div class="menu-item"><span class="name">بوب كورن</span><span class="price">99</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>ميلك شيك</h3>
+        <div class="menu-item"><span class="name">فانيليا</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">شوكولاتة</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">مانجو</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">فراولة</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">كراميل</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">بلو بيري</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">ميكس بيري</span><span class="price">95</span></div>
+        <div class="menu-item"><span class="name">بلو بيري زبادي</span><span class="price">99</span></div>
+        <div class="menu-item"><span class="name">لوتس</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">نوتيلا</span><span class="price">90</span></div>
+        <div class="menu-item"><span class="name">سنيكرز</span><span class="price">113</span></div>
+        <div class="menu-item"><span class="name">كيت كات</span><span class="price">114</span></div>
+        <div class="menu-item"><span class="name">مالتيزر</span><span class="price">114</span></div>
+        <div class="menu-item"><span class="name">أوريو</span><span class="price">95</span></div>
+        <div class="menu-item"><span class="name">تشيز كيك</span><span class="price">115</span></div>
+        <div class="menu-item"><span class="name">براونيز</span><span class="price">114</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>شيشة</h3>
+        <div class="menu-item"><span class="name">معسل سلوم</span><span class="price">12</span></div>
+        <div class="menu-item"><span class="name">معسل تفاح</span><span class="price">15</span></div>
+        <div class="menu-item"><span class="name">معسل فواكه</span><span class="price">85</span></div>
+        <div class="menu-item"><span class="name">معسل ميكس فواكه خاص</span><span class="price">100</span></div>
+        <div class="menu-item"><span class="name">معسل سعودي</span><span class="price">45</span></div>
+        <div class="menu-item"><span class="name">لي طبيعي</span><span class="price">12</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>بوبا</h3>
+        <div class="menu-item"><span class="name">قهوة</span><span class="price">95</span></div>
+        <div class="menu-item"><span class="name">باشن فروت</span><span class="price">95</span></div>
+        <div class="menu-item"><span class="name">بلو بيري</span><span class="price">90</span></div>
+      </div>
+
+      <div class="menu-category">
+        <h3>آيس كريم</h3>
+        <div class="menu-item"><span class="name">آيس كريم فردي</span><span class="price">30</span></div>
+        <div class="menu-item"><span class="name">آيس كريم دبل</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">أوريو</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">فراولة</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">شوكولاتة</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">فانيليا</span><span class="price">60</span></div>
+        <div class="menu-item"><span class="name">لوتس</span><span class="price">السعر غير مدرج</span></div>
+      </div>
+    </div>
+    <!-- Detailed menu list ends here -->
+
+  </section>
+
+  <section id="features">
+    <h2>🚀 خدمات ومميزات 3M Café</h2>
+    <div class="features-boxes">
+      <div class="feature"><i class="fas fa-wifi"></i> 📶 واي فاي مجاني فائق السرعة</div>
+      <div class="feature"><i class="fas fa-tv"></i> 📺 شاشات عرض مباريات beIN Sports</div>
+      <div class="feature"><i class="fas fa-champagne-glasses"></i> 🎉 تنظيم الحفلات والمناسبات الخاصة</div>
+      <div class="feature"><i class="fas fa-blender"></i> 🧋 مشروبات: فربتشينو – سموزي – ماتشا – ميلك شيك</div>
+      <div class="feature"><i class="fas fa-cake-candles"></i> 🍰 حلويات: تشيز كيك – كوكيز – مخبوزات طازجة</div>
+      <div class="feature"><i class="fas fa-bubble"></i> 🧋 بوبا: مشروبات Boba بنكهات متنوعة</div>
+      <div class="feature"><i class="fas fa-smoking"></i> 💨 شيشة بنكهات مميزة مع أفضل أنواع التبغ</div>
+      <div class="feature"><i class="fas fa-ice-cream"></i> 🍦 آيس كريم بنكهات فريدة وطبيعية</div>
+      <div class="feature"><i class="fas fa-hand-holding-heart"></i> 🧘‍♀️ جلسات يوجا مريحة وملهمة</div>
+      <div class="feature"><i class="fas fa-dice"></i> 🎲 مسابقات دومينو أسبوعية</div>
+      <div class="feature"><i class="fas fa-crown"></i> 👑 حفلات خاصة للبنات فقط</div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>📸 معرض الصور</h2>
+    <div class="gallery">
+      <!-- Added the party announcement image -->
+      <img src="https://i.postimg.cc/J4g77pVL/502827491-12211093979030595789-n.jpg" alt="إعلان حفلة">
+      <img src="https://i.postimg.cc/yWrD7Kh4/500404550-122109232022877864-350992318004154696-n.jpg" alt="صورة داخلية للمقهى">
+      <img src="https://i.postimg.cc/KRkRzWQK/500548080-122109213884877864-7285535618115148987-n.jpg" alt="مشروب أزرق مع ليمون">
+      <img src="https://i.postimg.cc/McxT9pwR/501057033-122109232340877864-1669305849590167262-n.jpg" alt="طاولة مزينة بالشموع">
+      <img src="https://i.postimg.cc/4mDnh1FW/501059759-122109232202877864-4772988634504752599-n.jpg" alt="قهوة مثلجة">
+      <img src="https://i.postimg.cc/NKRF8r3B/502565836-122110398404877864-2308151899844015094-n.jpg" alt="مشروبان منعشان">
+      <img src="https://i.postimg.cc/KKNYwhcW/502583130-122110399058877864-834885406866637783-n.jpg" alt="مشروب في كوب فريد">
+      <img src="https://i.postimg.cc/wyjBd47j/502686502-122110398272877864-4979560081120344134-n.jpg" alt="مشروب بوبا">
+      <img src="https://i.postimg.cc/S21xQLM7/502747159-122110398866877864-1152451424201193269-n.jpg" alt="مشروب في كوب زجاجي بكلمات">
+      <img src="https://i.postimg.cc/n9scXsK8/503180605-122110398908877864-7486331372585010644-n.jpg" alt="فناجين قهوة بفن اللاتيه">
+      <img src="https://i.postimg.cc/6TTQjPkH/503342120-122110042790877864-6813377684260940208-n.jpg" alt="شيشة">
+      <img src="https://i.postimg.cc/PNc5B4hd/503501236-122110399100877864-5567835889626596043-n.jpg" alt="كرواسون ومشروب">
+      <img src="https://i.postimg.cc/ZCd5ZdKp/503535240-122110398614877864-5739001745444432313-n.jpg" alt="مشروبات مع ليمون وفراولة">
+      <img src="https://i.postimg.cc/rDGyR24p/503727407-122110399004877864-6875454709460052082-n.jpg" alt="مشروب مثلج طويل">
+      <img src="https://i.postimg.cc/v4wHmZcj/504137019-122112062468877864-2329216950244473945-n.jpg" alt="شيشان وفراخ مشوية">
+    </div>
+  </section>
+
+  <section id="map">
+    <h2>🗺️ موقعنا على الخريطة</h2>
+    <iframe src="https://www.google.com/maps?q=شارع+شريف+تقاطع+شارع+رستم+باشا,+القاهرة&output=embed" height="300"></iframe>
+  </section>
+
+  <section id="contact">
+    <h2>💬 احجز مكانك الآن</h2>
+    <p>تواصل معنا عبر الواتساب لحجز طاولة أو تنظيم مناسبة</p>
+    <div class="whatsapp-btn">
+      <a href="https://wa.me/201012440384" target="_blank">📱 تواصل معنا على واتساب</a>
+    </div>
+  </section>
+
+  <section id="facebook">
+    <h2>🌐 تابعنا على فيسبوك</h2>
+    <div class="fb-embed">
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61576335944478&tabs=timeline&width=500&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" height="400"></iframe>
+    </div>
+  </section>
+
+  <button id="toTop" onclick="scrollToTop()" title="العودة للأعلى">⬆️</button>
+
+  <footer>
+    <p>© جميع الحقوق محفوظة 3M Café - تصميم وتنفيذ إيهاب GM</p>
+  </footer>
+
+  <script>
+    // Smooth scroll reveal for sections
+    ScrollReveal().reveal('section', {
+      delay: 200,
+      distance: '50px',
+      origin: 'bottom',
+      duration: 800,
+      easing: 'ease-out',
+      reset: false
+    });
+
+    // Back to top button functionality
+    const btn = document.getElementById('toTop');
+    window.onscroll = () => {
+      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    };
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
